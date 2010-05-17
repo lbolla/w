@@ -5,15 +5,40 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 
 
-class MainPage(webapp.RequestHandler):
+class Main(webapp.RequestHandler):
     def get(self):
-		path = os.path.join(os.path.dirname(__file__), 'index.html')
+		path = os.path.join(os.path.dirname(__file__), 
+				'tmpl/index.html')
 		ctx = {}
 		self.response.out.write(template.render(path, ctx))
 
 
+class Info(webapp.RequestHandler):
+    def get(self):
+		path = os.path.join(os.path.dirname(__file__), 
+				'tmpl/info.html')
+		ctx = {}
+		self.response.out.write(template.render(path, ctx))
+
+
+class Japan(webapp.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.out.write('Sakura @csszengarden')
+
+
+class Home(webapp.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.out.write('Home')
+
+
 application = webapp.WSGIApplication(
-                                     [('/', MainPage)],
+                                     [('/', Main),
+                                      ('/info/', Info),
+                                      ('/japan/', Japan),
+                                      ('/home/', Home),
+									],
                                      debug=True)
 
 

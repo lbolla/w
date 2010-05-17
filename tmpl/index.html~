@@ -97,7 +97,11 @@
 				<H3 class="select"><SPAN>Select a Design:</SPAN></H3>
 				<!-- list of links begins here. There will be no more than 8 links per page -->
 				<UL>
-					<LI><A href="/regali/" title="AccessKey: r" accesskey="r">Regali</A></LI>
+					<LI>Regali
+					<ul>
+						<li><A href="/japan/" title="AccessKey: j" accesskey="j">Japan</A></LI>
+						<li><A href="/home/" title="AccessKey: h" accesskey="h">Home</A></LI>
+					</ul></li>
 					<LI><A href="/info/" title="AccessKey: i" accesskey="i">Info</A></LI>
 				</UL>
 			</DIV>
