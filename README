@@ -1,7 +1,45 @@
-google app doc
-http://code.google.com/appengine/docs/python/gettingstarted/
+TODO
+====
 
-css zen garden
-	flowers
+
+Tools
+-----
+
+* googleapp http://code.google.com/appengine/docs/python/gettingstarted/
+* css da csszengarden (struttura html come homepage csszengarden)
+	* flowers
 		http://www.csszengarden.com/?cssfile=/208/208.css japan
 		http://www.csszengarden.com/?cssfile=211/211.css main
+* paypal donate (http://wikimediafoundation.org/wiki/Support_Wikipedia/en)
+
+
+Features
+--------
+
+* donate
+* leave a message
+* contact details
+* no registration whatsoever!
+* countdown money (man mano che donate.)
+* in italiano + tranduzione in inglese.
+
+
+Categories
+----------
+
+* regali
+	* viaggio japan
+	* casa
+* info
+	* ristorante
+	* mappe
+	* orari
+	* contatti e-mail
+
+
+Foto
+----
+
+* picasa?
+* upload foto senza registrarsi
+* votazione foto migliore (?)
