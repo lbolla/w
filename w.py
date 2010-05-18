@@ -4,33 +4,34 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 
+maintitle = 'Laura &amp; Lorenzo'
+
+def render_tmpl(response, tmplname, ctx):
+	path = os.path.join(os.path.dirname(__file__),
+			'tmpl', tmplname)
+	ctx['maintitle'] = maintitle
+	response.out.write(template.render(path, ctx))
+
 
 class Main(webapp.RequestHandler):
     def get(self):
-		path = os.path.join(os.path.dirname(__file__), 
-				'tmpl/index.html')
-		ctx = {}
-		self.response.out.write(template.render(path, ctx))
+		ctx = { 'subtitle': 'Main' }
+		render_tmpl(self.response, 'main.html', ctx)
 
 
 class Info(webapp.RequestHandler):
     def get(self):
-		path = os.path.join(os.path.dirname(__file__), 
-				'tmpl/info.html')
-		ctx = {}
-		self.response.out.write(template.render(path, ctx))
+		render_tmpl(self.response, 'info.html', {})
 
 
 class Japan(webapp.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.out.write('Sakura @csszengarden')
+		render_tmpl(self.response, 'japan.html', {})
 
 
 class Home(webapp.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.out.write('Home')
+		render_tmpl(self.response, 'home.html', {})
 
 
 application = webapp.WSGIApplication(
