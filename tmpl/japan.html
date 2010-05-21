@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
-{% block body %}
+{% block container %}
 	<p>Sakura style</p>
+
+	<form action="/japan" method="post">
+		<div><label for="sender">From:<input name="sender" /></label></div>
+		<div><label for="amount">Donate:<input name="amount" /></label></div>
+		<div>Paypal donate picture</div>
+		<div><label for="body">Message:<textarea name="body" rows="10" cols="60"></textarea></label></div>
+		<div><input type="submit" value="Send"></div>
+		<div class="form-msg">{{ form_msg }}</div>
+	</form>
+													 
 {% endblock %}
