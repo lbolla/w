@@ -8,7 +8,7 @@ body {
 }
 
 #header {
-	background-color: red;
+	/* background-color: red; */
 	position: relative;
 }
 
@@ -20,23 +20,15 @@ body {
 }
 
 #navbar {
-	background-color: green;
+	/* background-color: green; */
 	float: left;
 }
 
 #langbar {
-	background-color: cyan;
+	/* background-color: cyan; */
 	float: right;
 }
 
-#exc {
-	clear: both;
-}
-
-#container {
-	clear: both;
-}
-
 #footer {
-	background-color: yellow;
+	/* background-color: yellow; */
 }
