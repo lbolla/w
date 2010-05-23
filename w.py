@@ -2,23 +2,13 @@ import os
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.api import mail, users
 from google.appengine.ext.webapp import template
-from google.appengine.api import mail
 
 import validate
 
 
-maintitle = 'Laura &amp; Lorenzo'
 EXC = None
-
-
-def render_tmpl(response, tmplname, ctx):
-	path = os.path.join(os.path.dirname(__file__),
-			'tmpl', tmplname)
-	ctx['maintitle'] = maintitle
-	ctx['EXC'] = EXC
-	response.out.write(template.render(path, ctx))
-
 
 def set_exc(e=None):
 	global EXC
@@ -26,23 +16,36 @@ def set_exc(e=None):
 
 
 class Handler(webapp.RequestHandler):
+
+	maintitle = 'Laura &amp; Lorenzo'
+
 	def initialize(self, *args, **kwargs):
 		set_exc()
 		super(Handler, self).initialize(*args, **kwargs)
+		self.user = users.get_current_user()
+
+	def render_tmpl(self, tmplname, ctx):
+		path = os.path.join(os.path.dirname(__file__),
+				'tmpl', tmplname)
+		ctx['maintitle'] = self.maintitle
+		ctx['EXC'] = EXC
+		ctx['user'] = self.user
+		ctx['logout_url'] = users.create_logout_url('/')
+		self.response.out.write(template.render(path, ctx))
 
 
 class Main(Handler):
 
 	def get(self):
 		ctx = {}
-		render_tmpl(self.response, 'main.html', ctx)
+		self.render_tmpl('main.html', ctx)
 
 
 class Info(Handler):
 
 	def get(self):
 		ctx = { 'subtitle': 'Info' }
-		render_tmpl(self.response, 'info.html', ctx)
+		self.render_tmpl('info.html', ctx)
 
 
 class Japan(Handler):
@@ -56,7 +59,7 @@ class Japan(Handler):
 
 	def get(self):
 		ctx = { 'subtitle': 'Japan' }
-		render_tmpl(self.response, 'japan.html', ctx)
+		self.render_tmpl('japan.html', ctx)
 
 	def post(self):
 		try:
@@ -79,16 +82,16 @@ class Home(Handler):
 
 	def get(self):
 		ctx = { 'subtitle': 'Home' }
-		render_tmpl(self.response, 'home.html', ctx)
+		self.render_tmpl('home.html', ctx)
 
 
-application = webapp.WSGIApplication(
-									 [('/', Main),
-									  ('/info', Info),
-									  ('/japan', Japan),
-									  ('/home', Home),
-									],
-									 debug=True)
+application = webapp.WSGIApplication([
+	('/', Main),
+	('/info', Info),
+	('/japan', Japan),
+	('/home', Home),
+	],
+	debug=True)
 
 
 def main():

@@ -37,6 +37,9 @@
 				<li><a href="#">English</a></li>
 				<li><a href="#">Italiano</a></li>
 			</ul>
+			{% if user %}
+			Ciao {{ user }}! <a href="{{ logout_url }}">Logout</a>
+			{% endif %}
 		</div>
 
 		{% if EXC %}
