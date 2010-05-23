@@ -4,6 +4,12 @@ runtime: python
 api_version: 1
 
 handlers:
+- url: /css
+  static_dir: css
+
+- url: /img
+  static_dir: img
+
 - url: /admin/?.*
   script: admin.py
   login: admin
@@ -11,8 +17,3 @@ handlers:
 - url: /.*
   script: w.py
 
-- url: /css
-  static_dir: css
-
-- url: /img
-  static_dir: img

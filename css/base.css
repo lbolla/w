@@ -1,8 +1,42 @@
-html {
-	margin: 0;
+body {
+	margin: 0px;
 	padding: 0;
 }
 
 #exc {
 	border: 2px solid red;
+}
+
+#header {
+	background-color: red;
+	position: relative;
+}
+
+#header ul,
+#header li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+#navbar {
+	background-color: green;
+	float: left;
+}
+
+#langbar {
+	background-color: cyan;
+	float: right;
+}
+
+#exc {
+	clear: both;
+}
+
+#container {
+	clear: both;
+}
+
+#footer {
+	background-color: yellow;
 }

@@ -19,7 +19,7 @@
 
 		<style type="text/css" media="all">
 			{% block styles %}
-			@import "css/base.css";
+			@import "/css/base.css";
 			{% endblock %}
 		</style>
 	</head>
@@ -27,19 +27,20 @@
 	<body>
 
 		<div id="header">
-			<ul>
-				<li><a href="/">Main</a></li>
-				<li><a href="/info">Info</li>
-				<li><a href="/japan">Japan</li>
-				<li><a href="/home">Home</li>
-			</ul>
-			<ul>
-				<li><a href="#">English</a></li>
-				<li><a href="#">Italiano</a></li>
-			</ul>
-			{% if user %}
-			Ciao {{ user }}! <a href="{{ logout_url }}">Logout</a>
-			{% endif %}
+			<div id="navbar">
+				<ul>
+					<li><a href="/">Main</a></li>
+					<li><a href="/info">Info</li>
+					<li><a href="/japan">Japan</li>
+					<li><a href="/home">Home</li>
+				</ul>
+			</div>
+			<div id="langbar">
+				<ul>
+					<li><a href="#">English</a></li>
+					<li><a href="#">Italiano</a></li>
+				</ul>
+			</div>
 		</div>
 
 		{% if EXC %}
@@ -55,6 +56,11 @@
 		</div>
 
 		<div id="footer">
+			<div id="user">
+				{% if user %}
+				Ciao {{ user }}! <a href="{{ logout_url }}">Logout</a>
+				{% endif %}
+			</div>
 		</div>
 
 	</body>
